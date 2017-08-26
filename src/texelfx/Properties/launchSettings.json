@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "texelfx": {
+      "commandName": "Project",
+      "commandLineArgs": "star-trek-ds9.bmp"
+    }
+  }
+}
