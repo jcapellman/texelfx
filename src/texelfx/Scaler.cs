@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
@@ -32,10 +33,17 @@ namespace texelfx
                 {
                     Image img = Image.FromStream(BitmapStream);
 
-                    var mBitmap = new Bitmap(img);
+                    Bitmap mBitmap;
+                    
+                    using (Graphics g = Graphics.FromImage(img))
+                    {
+                        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        g.DrawImage(img, 0, 0, width, height);
 
-                    mBitmap.Save(getOutputFileName(inputFileName, outputFileName), ImageFormat.Bmp);
-
+                        mBitmap = new Bitmap(width, height, g);
+                        mBitmap.Save(getOutputFileName(inputFileName, outputFileName), ImageFormat.Png);
+                    }
+                    
                     return StatusCodes.SUCCESSFULLY_SCALED;
                 }
             } catch (Exception)
