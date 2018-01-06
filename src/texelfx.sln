@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "texelfx", "texelfx\texelfx.csproj", "{7A62141D-3DFA-4FD5-A857-12D9BD952977}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "texelfx.library", "texelfx.library\texelfx.library.csproj", "{A3464023-869B-48AE-885A-C4C78024A9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "texelfx.webapi", "texelfx.webapi\texelfx.webapi.csproj", "{71A526B1-C182-42B4-846F-0CC12679D58D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "texelfx.mvc", "texelfx.mvc\texelfx.mvc.csproj", "{AA3CF545-B642-487D-8938-9C71533C022C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A62141D-3DFA-4FD5-A857-12D9BD952977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A62141D-3DFA-4FD5-A857-12D9BD952977}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A62141D-3DFA-4FD5-A857-12D9BD952977}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A62141D-3DFA-4FD5-A857-12D9BD952977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3464023-869B-48AE-885A-C4C78024A9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3464023-869B-48AE-885A-C4C78024A9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3464023-869B-48AE-885A-C4C78024A9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3464023-869B-48AE-885A-C4C78024A9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A526B1-C182-42B4-846F-0CC12679D58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A526B1-C182-42B4-846F-0CC12679D58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A526B1-C182-42B4-846F-0CC12679D58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A526B1-C182-42B4-846F-0CC12679D58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3CF545-B642-487D-8938-9C71533C022C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3CF545-B642-487D-8938-9C71533C022C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3CF545-B642-487D-8938-9C71533C022C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3CF545-B642-487D-8938-9C71533C022C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

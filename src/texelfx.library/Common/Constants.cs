@@ -1,4 +1,4 @@
-﻿namespace texelfx.Common
+﻿namespace texelfx.library.Common
 {
     public static class Constants
     {

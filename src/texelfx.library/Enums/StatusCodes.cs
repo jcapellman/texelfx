@@ -1,4 +1,4 @@
-﻿namespace texelfx.Enums
+﻿namespace texelfx.library.Enums
 {
     public enum StatusCodes
     {

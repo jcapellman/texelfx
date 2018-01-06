@@ -4,9 +4,9 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-using texelfx.Enums;
+using texelfx.library.Enums;
 
-namespace texelfx
+namespace texelfx.library
 {
     public class Scaler
     {
