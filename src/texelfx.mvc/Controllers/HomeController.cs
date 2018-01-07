@@ -53,7 +53,8 @@ namespace texelfx.mvc.Controllers
                OriginalBytes = fileBytes,
                ScalerType = model.ScalerType,
                ResizedBytes = response.ScaledBytes,
-               Dimensions = renderDimensions
+               Dimensions = renderDimensions,
+               ScaledDimensions = response.ScalledDimensions
             });
         }
     }
