@@ -9,17 +9,22 @@
 
     <p>
         <h4>Scaled using @Model.ScalerType</h4>
+        
+        <div class="OutputContainer">
+            <h3>Original Image</h3>
 
-        <h5>Original Image</h5>
-        <img src="data:image;base64,@System.Convert.ToBase64String(Model.OriginalBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+            <br/>
 
-        <br />
+            <img alt="Original Image" src="data:image;base64,@System.Convert.ToBase64String(Model.OriginalBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
 
-        <h5>Scaled Image</h5>
-        <img src="data:image;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+            <br />
 
-        <br />
-        <br />
+            <h3>Scaled Image</h3>
+        
+            <br/>
+
+            <img alt="Scaled Image" src="data:image;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.ScaledDimensions.width" height="@Model.ScaledDimensions.height" />
+        </div>
 
         <a href="/" role="button" class="btn btn-warning">home</a>
     </p>

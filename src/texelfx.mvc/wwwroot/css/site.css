@@ -1,19 +1,20 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #1e1e1e;
+    background-color: #0e0e0e;
 }
 
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    color: orange;
+    color: Gold;
+    width: 100%;
     text-align: center;
 }
 
-    .body-content h3 {
-        font-weight: bold;
-    }
+.body-content h3 {
+    font-weight: bold;
+}
 
 footer {
     text-align: center;
@@ -47,3 +48,15 @@ footer {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
+/* Generation Specific CSS */
+.OutputContainer {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.OutputContainer h3 {
+    font-weight: bolder;
+    color: White;
+}
+/* End Generation Specific CSS */
