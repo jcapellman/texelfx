@@ -6,16 +6,27 @@
     <p>Generate a scaled image below using the available scaler</p>
 
     <form asp-controller="Home" asp-action="Generate" method="post" enctype="multipart/form-data">
-        <input asp-for="UploadFile" type="file" class="form-control" />
-        
+        <div class="fileUpload btn btn-info">
+            <span id="uploadLabel">Select File for Scaling...</span>
+            <input id="uploadBtn" asp-for="UploadFile" type="file" class="upload" />
+        </div>
+
         <select id="scalerType" name="scalerType" class="form-control" style="max-width: 200px; margin: 0 auto; text-align: center">
-            @foreach (var scalerName in Model.Scalers) {
-                <option>@scalerName</option>
-            }
+            @foreach (var scalerName in Model.Scalers)
+        {
+            <option>@scalerName</option>
+    }
         </select>
 
         <br />
 
-        <button type="submit" class="btn-lg btn-primary">scale image</button>
+        <button id="btnSubmit" type="submit" class="btn-lg btn-primary" style="opacity: .5">scale image</button>
     </form>
 </div>
+
+<script type="text/javascript">
+    document.getElementById("uploadBtn").onchange = function () {
+        document.getElementById("uploadLabel").innerText = 'Selected ' + this.value;
+        document.getElementById("btnSubmit").style.opacity = 1;
+    };
+</script>
