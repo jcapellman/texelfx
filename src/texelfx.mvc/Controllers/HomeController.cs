@@ -44,7 +44,7 @@ namespace texelfx.mvc.Controllers
 
             var response = generator.Scale(2, fileBytes);
 
-            var aspectRatio = ((float)response.ScalledDimensions.width / response.ScalledDimensions.height);
+            var aspectRatio = ((float)response.ScaledDimensions.width / response.ScaledDimensions.height);
 
             (int height, int width) renderDimensions = (800, Convert.ToInt32(800 / aspectRatio)); 
 
@@ -54,7 +54,7 @@ namespace texelfx.mvc.Controllers
                ScalerType = model.ScalerType,
                ResizedBytes = response.ScaledBytes,
                Dimensions = renderDimensions,
-               ScaledDimensions = response.ScalledDimensions
+               ScaledDimensions = response.ScaledDimensions
             });
         }
     }
