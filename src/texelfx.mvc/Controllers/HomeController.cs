@@ -1,37 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using texelfx.library;
+using texelfx.library.Common;
+using texelfx.library.Managers;
+
 using texelfx.mvc.Models;
 
 namespace texelfx.mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index() => View(new FileUploadModel
         {
-            return View();
+            Scalers = ScalerManager.GetScalers().Select(a => a.Name).ToList()
+        });
+
+        private BaseScaler GetScaler(string name) => ScalerManager.GetScalers().FirstOrDefault(a => a.Name == name);
+
+        private byte[] GetBytesFromPost(IFormFile file)
+        {
+            using (var ms = new BinaryReader(file.OpenReadStream()))
+            {
+                return ms.ReadBytes((int)file.Length);
+            }            
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public IActionResult Generate(FileUploadModel model)
         {
-            ViewData["Message"] = "Your application description page.";
+            var generator = GetScaler(model.ScalerType);
 
-            return View();
-        }
+            if (generator == null)
+            {
+                throw new Exception($"{model.ScalerType} was not found");
+            }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+            var fileBytes = GetBytesFromPost(model.UploadFile);
 
-            return View();
-        }
+            var responseBytes = generator.Scale(Constants.DEFAULT_SCALE_WIDTH, Constants.DEFAULT_SCALE_HEIGHT, fileBytes);
 
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View("Generation", new GenerationResponseModel
+            {
+               OriginalBytes = fileBytes,
+               ScalerType = model.ScalerType,
+               ResizedBytes = responseBytes
+            });
         }
     }
 }
