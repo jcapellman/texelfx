@@ -1,5 +1,7 @@
 ﻿using System;
 
+using texelfx.library.Objects;
+
 namespace texelfx.library
 {
     public abstract class BaseScaler
@@ -8,6 +10,6 @@ namespace texelfx.library
 
         protected static string GetOutputFileName(string inputFileName, string outputFileName) => !string.IsNullOrEmpty(outputFileName) ? outputFileName : $"{DateTime.Now.Ticks}_{inputFileName}";
 
-        public abstract byte[] Scale(int width, int height, byte[] originalBytes);        
+        public abstract ScalerResponseItem Scale(int scaleMultiplier, byte[] originalBytes);        
     }
 }

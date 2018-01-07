@@ -6,6 +6,10 @@
     <p>
         <h4>Scaled using @Model.ScalerType</h4>
 
+        <img src="data:image;base64,@System.Convert.ToBase64String(Model.OriginalBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+
+        <img src="data:imgage/png;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+
         <a href="/" role="button" class="btn btn-warning">home</a>
     </p>
 </div>

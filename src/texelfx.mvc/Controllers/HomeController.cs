@@ -27,7 +27,7 @@ namespace texelfx.mvc.Controllers
             using (var ms = new BinaryReader(file.OpenReadStream()))
             {
                 return ms.ReadBytes((int)file.Length);
-            }            
+            }
         }
 
         [HttpPost]
@@ -42,13 +42,18 @@ namespace texelfx.mvc.Controllers
 
             var fileBytes = GetBytesFromPost(model.UploadFile);
 
-            var responseBytes = generator.Scale(Constants.DEFAULT_SCALE_WIDTH, Constants.DEFAULT_SCALE_HEIGHT, fileBytes);
+            var response = generator.Scale(2, fileBytes);
+
+            var aspectRatio = ((float)response.ScalledDimensions.width / response.ScalledDimensions.height);
+
+            (int height, int width) renderDimensions = (800, Convert.ToInt32(800 / aspectRatio)); 
 
             return View("Generation", new GenerationResponseModel
             {
                OriginalBytes = fileBytes,
                ScalerType = model.ScalerType,
-               ResizedBytes = responseBytes
+               ResizedBytes = response.ScaledBytes,
+               Dimensions = renderDimensions
             });
         }
     }

@@ -3,13 +3,15 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 
+using texelfx.library.Objects;
+
 namespace texelfx.library.Scalers
 {
     public class NearestNeighborScaler : BaseScaler
     {
         public override string Name => "Nearest Neighbor";
 
-        public override byte[] Scale(int width, int height, byte[] originalBytes)
+        public override ScalerResponseItem Scale(int scaleMultiplier, byte[] originalBytes)
         {
             try
             {
@@ -19,13 +21,28 @@ namespace texelfx.library.Scalers
 
                     using (var graphics = Graphics.FromImage(img))
                     {
-                        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                        graphics.DrawImage(img, 0, 0, width, height);
+                        var responseItem = new ScalerResponseItem
+                        {
+                            OriginalDimensions = (img.Width, img.Height),
+                            ScalledDimensions = (img.Width * 2, img.Height * 2)
+                        };
 
-                        var mBitmap = new Bitmap(width, height, graphics);
+                        graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                        graphics.DrawImage(img, 0, 0, img.Width * scaleMultiplier, img.Height * scaleMultiplier);
+
+                        graphics.Save();
+
+                        var mBitmap = new Bitmap(img.Width * scaleMultiplier, img.Height * scaleMultiplier, graphics);
+
+                        using (var ms = new MemoryStream())
+                        {
+                            mBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+                            responseItem.ScaledBytes = ms.ToArray();
+
+                            return responseItem;
+                        }
                     }
-
-                    return null;
                 }
             }
             catch (Exception)

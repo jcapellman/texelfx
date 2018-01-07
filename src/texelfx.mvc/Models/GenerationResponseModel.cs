@@ -7,5 +7,7 @@
         public byte[] OriginalBytes { get; set; }
 
         public byte[] ResizedBytes { get; set; }
+
+        public (int width, int height) Dimensions { get; set; }
     }
 }
