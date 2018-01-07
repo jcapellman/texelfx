@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 
 using texelfx.library.Objects;
@@ -19,24 +20,25 @@ namespace texelfx.library.Scalers
                 {
                     var img = Image.FromStream(bitmapStream);
 
-                    using (var graphics = Graphics.FromImage(img))
+                    var responseItem = new ScalerResponseItem
                     {
-                        var responseItem = new ScalerResponseItem
-                        {
-                            OriginalDimensions = (img.Width, img.Height),
-                            ScalledDimensions = (img.Width * 2, img.Height * 2)
-                        };
+                        OriginalDimensions = (img.Width, img.Height),
+                        ScaledDimensions = (img.Width * scaleMultiplier, img.Height * scaleMultiplier)
+                    };
 
+                    var scaledResult = new Bitmap(responseItem.ScaledDimensions.width, responseItem.ScaledDimensions.height);
+                    scaledResult.SetResolution(img.HorizontalResolution, img.VerticalResolution);
+                    
+                    using (var graphics = Graphics.FromImage(scaledResult))
+                    {
+                        graphics.CompositingQuality = CompositingQuality.HighQuality;
                         graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-                        graphics.DrawImage(img, 0, 0, img.Width * scaleMultiplier, img.Height * scaleMultiplier);
-
-                        graphics.Save();
-
-                        var mBitmap = new Bitmap(img.Width * scaleMultiplier, img.Height * scaleMultiplier, graphics);
-
+                        graphics.SmoothingMode = SmoothingMode.HighQuality;
+                        graphics.DrawImage(img, 0, 0, responseItem.ScaledDimensions.width, responseItem.ScaledDimensions.height);
+                        
                         using (var ms = new MemoryStream())
                         {
-                            mBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            scaledResult.Save(ms, ImageFormat.Png);
 
                             responseItem.ScaledBytes = ms.ToArray();
 
