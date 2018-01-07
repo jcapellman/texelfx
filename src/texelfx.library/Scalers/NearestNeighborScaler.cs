@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
-
-using texelfx.library.Enums;
 
 namespace texelfx.library.Scalers
 {
     public class NearestNeighborScaler : BaseScaler
     {
-        public override StatusCodes Scale(int width, int height, string inputFileName, string outputFileName)
-        {
-            if (!File.Exists(inputFileName))
-            {
-                return StatusCodes.INPUT_FILE_DOES_NOT_EXIST;
-            }
+        public override string Name => "Nearest Neighbor";
 
+        public override byte[] Scale(int width, int height, byte[] originalBytes)
+        {
             try
             {
-                using (var bitmapStream = File.Open(inputFileName, FileMode.Open))
+                using (var bitmapStream = new MemoryStream(originalBytes))
                 {
                     var img = Image.FromStream(bitmapStream);
 
@@ -29,15 +23,14 @@ namespace texelfx.library.Scalers
                         graphics.DrawImage(img, 0, 0, width, height);
 
                         var mBitmap = new Bitmap(width, height, graphics);
-                        mBitmap.Save(GetOutputFileName(inputFileName, outputFileName), ImageFormat.Png);
                     }
 
-                    return StatusCodes.SUCCESSFULLY_SCALED;
+                    return null;
                 }
             }
             catch (Exception)
             {
-                return StatusCodes.INTERNAL_ERROR;
+                return null;
             }
         }
     }
