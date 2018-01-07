@@ -1,7 +1,7 @@
 ﻿@model texelfx.mvc.Models.FileUploadModel
 
 <div>
-    <img src="images/logo.png" />
+    <img src="images/logo.png" alt="texelFX" />
 
     <p>Generate a scaled image below using the available scaler</p>
 
@@ -13,9 +13,9 @@
 
         <select id="scalerType" name="scalerType" class="form-control" style="max-width: 200px; margin: 0 auto; text-align: center">
             @foreach (var scalerName in Model.Scalers)
-        {
-            <option>@scalerName</option>
-    }
+            {
+                <option>@scalerName</option>
+            }
         </select>
 
         <br />

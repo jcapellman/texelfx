@@ -36,7 +36,7 @@ namespace texelfx.library.Scalers
 
                         using (var ms = new MemoryStream())
                         {
-                            mBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                            mBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
                             responseItem.ScaledBytes = ms.ToArray();
 

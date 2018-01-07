@@ -1,14 +1,25 @@
 ﻿@model texelfx.mvc.Models.GenerationResponseModel
 
 <div>
-    <h3>texelfx Scaler Results</h3>
+    <img src="../images/logo.png" alt="texelFX" />
+    
+    <br/>
+
+    <h3>Scaler Results</h3>
 
     <p>
         <h4>Scaled using @Model.ScalerType</h4>
 
+        <h5>Original Image</h5>
         <img src="data:image;base64,@System.Convert.ToBase64String(Model.OriginalBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
 
-        <img src="data:imgage/png;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+        <br />
+
+        <h5>Scaled Image</h5>
+        <img src="data:image;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+
+        <br />
+        <br />
 
         <a href="/" role="button" class="btn btn-warning">home</a>
     </p>
