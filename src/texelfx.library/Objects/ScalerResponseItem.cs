@@ -6,6 +6,6 @@
 
         public (int width, int height) OriginalDimensions { get; set; }
 
-        public (int width, int height) ScalledDimensions { get; set; }
+        public (int width, int height) ScaledDimensions { get; set; }
     }
 }
