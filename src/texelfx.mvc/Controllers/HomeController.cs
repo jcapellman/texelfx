@@ -44,6 +44,11 @@ namespace texelfx.mvc.Controllers
 
             var response = generator.Scale(2, fileBytes);
 
+            if (response.HasError)
+            {
+                return View("Error");
+            }
+
             var aspectRatio = ((float)response.ScaledDimensions.width / response.ScaledDimensions.height);
 
             (int height, int width) renderDimensions = (800, Convert.ToInt32(800 / aspectRatio)); 
