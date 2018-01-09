@@ -47,9 +47,9 @@ namespace texelfx.library.Scalers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                return new ScalerResponseItem(ex);
             }
         }
     }
