@@ -5,11 +5,15 @@ A larger project to provide an easy way to scale standard definition images or v
 Rather than tackle that entire problem, I broke it into 3 versions.
 
 First Version:
+
 -Detection of Compression Artifacts (JPEG/MPEG)
+
 -Removal of Compression Artifacts
 
 Second Version:
+
 -Detection of detail loss due to resolution
+
 -Replacement of pixels due to resolution from a higher definition source
 
 Third Version:
