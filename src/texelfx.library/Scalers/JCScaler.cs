@@ -13,6 +13,16 @@ namespace texelfx.library.Scalers
 
         public override string Name => "JC Scaler";
 
+        private enum GraphInput
+        {
+            IMAGE_BYTES = 0
+        }
+
+        private enum GraphOutput
+        {
+            COMPRESSION_ARTIFACTS_DETECTED = 0
+        }
+        
         public override ScalerResponseItem Scale(int scaleMultiplier, byte[] originalBytes)
         {
             var graph = new TFGraph();
@@ -25,11 +35,11 @@ namespace texelfx.library.Scalers
 
                 var runner = session.GetRunner();
 
-                // TODO AddInput to the runner with the data from above
+                runner.AddInput(graph["input"][(int)GraphInput.IMAGE_BYTES], tensor);
 
-                var output = runner.Run();
+                var output = runner.Run()[0];
                 
-                // TODO Parse output
+                var hasCompressionArtifacts = ((bool[])output.GetValue())[(int)GraphOutput.COMPRESSION_ARTIFACTS_DETECTED];
             }
 
             return new ScalerResponseItem
