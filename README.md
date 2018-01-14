@@ -7,7 +7,7 @@ Rather than tackle that entire problem, I broke it into 3 versions.
 First Version:
 
 -Detection of Compression Artifacts (JPEG/MPEG)
-
+-Detection of the pixels that exhibit the compression artifacts
 -Removal of Compression Artifacts
 
 Second Version:
