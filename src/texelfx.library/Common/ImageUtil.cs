@@ -1,22 +1,26 @@
 ﻿// Originally from https://github.com/migueldeicaza/TensorFlowSharp/blob/master/Examples/ExampleCommon/ImageUtil.cs
 // Replaced the CreateTensorFromImageFile with CreateTensorFromBytes and replaced some of the syntax with C# 7.1 syntax
 
+using System.Numerics;
+
 using TensorFlowSharpCore;
 
 namespace texelfx.library.Common
 {
     public static class ImageUtil
     {
-        // Convert the image in filename to a Tensor suitable as input to the Inception model.
-        public static TFTensor CreateTensorFromImageBytes(byte[] fileBytes, TFDataType destinationDataType = TFDataType.Float)
+        /// <summary>
+        /// Converts a PNG Bytes to a TFTensor
+        /// </summary>
+        /// <param name="fileBytes">PNG Bytes</param>
+        /// <param name="dimension">Source dimension</param>
+        /// <returns></returns>
+        public static TFTensor CreateTensorFromImageBytes(byte[] fileBytes, Vector2 dimension)
         {
-            // DecodeJpeg uses a scalar String-valued tensor as input.
             var tensor = TFTensor.CreateString(fileBytes);
 
-            // Construct a graph to normalize the image
-            ConstructGraphToNormalizeImage(out var graph, out var input, out var output, destinationDataType);
-
-            // Execute that graph to normalize this one image
+            ConstructGraphToNormalizeImage(out var graph, out var input, out var output, dimension);
+            
             using (var session = new TFSession(graph))
             {
                 var normalized = session.Run(
@@ -28,27 +32,8 @@ namespace texelfx.library.Common
             }
         }
 
-        // The inception model takes as input the image described by a Tensor in a very
-        // specific normalized format (a particular image size, shape of the input tensor,
-        // normalized pixel values etc.).
-        //
-        // This function constructs a graph of TensorFlow operations which takes as
-        // input a JPEG-encoded string and returns a tensor suitable as input to the
-        // inception model.
-        private static void ConstructGraphToNormalizeImage(out TFGraph graph, out TFOutput input, out TFOutput output, TFDataType destinationDataType = TFDataType.Float)
+        private static void ConstructGraphToNormalizeImage(out TFGraph graph, out TFOutput input, out TFOutput output, Vector2 dimension)
         {
-            // Some constants specific to the pre-trained model at:
-            // https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip
-            //
-            // - The model was trained after with images scaled to 224x224 pixels.
-            // - The colors, represented as R, G, B in 1-byte each were converted to
-            //   float using (value - Mean)/Scale.
-
-            const int W = 224;
-            const int H = 224;
-            const float Mean = 117;
-            const float Scale = 1;
-
             graph = new TFGraph();
             input = graph.Placeholder(TFDataType.String);
 
@@ -57,11 +42,11 @@ namespace texelfx.library.Common
                     x: graph.ResizeBilinear(
                         images: graph.ExpandDims(
                             input: graph.Cast(
-                                graph.DecodeJpeg(contents: input, channels: 3), DstT: TFDataType.Float),
+                                graph.DecodePng(contents: input, channels: 3), DstT: TFDataType.Float),
                             dim: graph.Const(0, "make_batch")),
-                        size: graph.Const(new int[] { W, H }, "size")),
-                    y: graph.Const(Mean, "mean")),
-                y: graph.Const(Scale, "scale")), destinationDataType);
+                        size: graph.Const(new[] { dimension.X, dimension.Y }, "size")),
+                    y: graph.Const(117, "mean")),
+                y: graph.Const(1, "scale")), TFDataType.Float);
         }
     }
 }
