@@ -10,7 +10,7 @@ namespace texelfx.library.Objects
 
         public (int width, int height) ScaledDimensions { get; set; }
 
-        public Exception ExceptionCaught { get; private set; }
+        private Exception ExceptionCaught { get; }
 
         public bool HasError => ExceptionCaught != null;
 
