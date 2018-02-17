@@ -1,27 +1,33 @@
 ﻿@model texelfx.mvc.Models.FileUploadModel
 
-<div>
-    <img src="images/logo.png" alt="texelFX" />
-
-    <p>Generate a scaled image below using the available scaler</p>
-
-    <form asp-controller="Home" asp-action="Generate" method="post" enctype="multipart/form-data">
-        <div class="fileUpload btn btn-info">
-            <span id="uploadLabel">Select File for Scaling...</span>
-            <input id="uploadBtn" asp-for="UploadFile" type="file" class="upload" />
+<div class="container">
+    <div class="row">
+        <div class="col-xl-9 mx-auto">
+            <h1 class="mb-5">
+                Generate a scaled image below using the available scaler
+            </h1>
         </div>
 
-        <select id="scalerType" name="scalerType" class="form-control" style="max-width: 200px; margin: 0 auto; text-align: center">
-            @foreach (var scalerName in Model.Scalers)
-            {
-                <option>@scalerName</option>
-            }
-        </select>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form asp-controller="Home" asp-action="Generate" method="post" enctype="multipart/form-data">
+                <div class="fileUpload btn btn-info" style="margin-bottom: 10px;">
+                    <span id="uploadLabel">Select File for Scaling...</span>
+                    <input id="uploadBtn" asp-for="UploadFile" type="file" class="upload" />
+                </div>
 
-        <br />
+                <select id="scalerType" name="scalerType" class="form-control" style="max-width: 200px; margin: 0 auto; text-align: center">
+                    @foreach (var scalerName in Model.Scalers)
+                    {
+                        <option>@scalerName</option>
+                    }
+                </select>
 
-        <button id="btnSubmit" type="submit" class="btn-lg btn-primary" style="opacity: .5">scale image</button>
-    </form>
+                <br />
+
+                <button id="btnSubmit" type="submit" class="btn-lg btn-primary" style="opacity: .5">scale image</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">

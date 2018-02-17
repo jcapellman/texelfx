@@ -1,6 +1,6 @@
 # texelfx
 
-A larger project to provide an easy way to scale standard definition images or video to HD (and possibly 4k).
+A larger project to provide an easy way to scale standard definition images or video to HD (and possibly 4k).  At first I was going to use Microsoft's CNTK framework, but this has issues with .NET Core 2 at the moment.  So I am using Tensorflow with my .NET Core 2 port of TensorflowSharp.
 
 Rather than tackle that entire problem, I broke it into 3 versions.
 
