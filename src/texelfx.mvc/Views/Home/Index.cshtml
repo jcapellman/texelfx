@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form asp-controller="Home" asp-action="Generate" method="post" enctype="multipart/form-data">
+            <form asp-controller="Home" asp-action="Generate" method="post" enctype="multipart/form-data">                
                 <div class="fileUpload btn btn-info" style="margin-bottom: 10px;">
                     <span id="uploadLabel">Select File for Scaling...</span>
                     <input id="uploadBtn" asp-for="UploadFile" type="file" class="upload" />
@@ -22,9 +22,9 @@
                     }
                 </select>
 
-                <br />
+                <br/>
 
-                <button id="btnSubmit" type="submit" class="btn-lg btn-primary" style="opacity: .5">scale image</button>
+                <button id="btnSubmit" type="submit" class="btn-lg btn-primary" style="opacity: .5" disabled>scale image</button>
             </form>
         </div>
     </div>
@@ -34,5 +34,6 @@
     document.getElementById("uploadBtn").onchange = function () {
         document.getElementById("uploadLabel").innerText = 'Selected ' + this.value;
         document.getElementById("btnSubmit").style.opacity = 1;
+        document.getElementById("btnSubmit").disabled = "";
     };
 </script>
