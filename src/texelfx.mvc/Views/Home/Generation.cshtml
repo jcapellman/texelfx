@@ -5,30 +5,32 @@
 }
 
 <div class="container-fluid">
-    <div class="row">
-        <h1 class="mb-5">
-            Scaler Results
-        </h1>
+    <h1 style="color: black" class="text-center">
+        Scaler Results
+    </h1>
     
-        <div class="col-sm-12 text-center">
-            <h4>Scaled using @Model.ScalerType</h4>
+    <div class="col-sm-12 text-center">
+        <h4>Scaled using @Model.ScalerType</h4>
 
-            <div class="OutputContainer">
-                <h3>Original Image</h3>
+        <div class="OutputContainer">
+            <h3>Original Image</h3>
 
-                <br />
+            <br />
 
-                <img alt="Original Image" src="data:image;base64,@System.Convert.ToBase64String(Model.OriginalBytes)" class="img-fluid text-center" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
+            <img alt="Original Image" src="data:image;base64,@System.Convert.ToBase64String(Model.OriginalBytes)" class="img-fluid text-center" width="@Model.Dimensions.width" height="@Model.Dimensions.height" />
 
-                <br />
+            <br /><br/>
 
-                <h3>Scaled Image</h3>
+            <h3>Scaled Image</h3>
 
-                <br />
+            <br />
 
-                <img alt="Scaled Image" src="data:image;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.ScaledDimensions.width" height="@Model.ScaledDimensions.height" />
-            </div>
+            <img alt="Scaled Image" class="img-fluid" src="data:image;base64,@System.Convert.ToBase64String(Model.ResizedBytes)" width="@Model.ScaledDimensions.width" height="@Model.ScaledDimensions.height" />
+        </div>
 
+        <br/>
+
+        <div class="form-group">
             <a href="/" role="button" class="btn btn-warning">home</a>
         </div>
     </div>
