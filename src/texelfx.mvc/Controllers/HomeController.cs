@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,7 @@ namespace texelfx.mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult Generate(FileUploadModel model)
+        public async Task<IActionResult> Generate(FileUploadModel model)
         {
             var generator = GetScaler(model.ScalerType);
 
@@ -41,7 +42,7 @@ namespace texelfx.mvc.Controllers
 
             var fileBytes = GetBytesFromPost(model.UploadFile);
 
-            var response = generator.Scale(2, fileBytes);
+            var response = await generator.ScaleAsync(2, fileBytes);
 
             if (response.HasError)
             {

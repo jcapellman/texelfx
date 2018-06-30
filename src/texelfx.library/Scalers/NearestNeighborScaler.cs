@@ -36,7 +36,7 @@ namespace texelfx.library.Scalers
                         graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
                         graphics.SmoothingMode = SmoothingMode.HighQuality;
                         graphics.DrawImage(img, 0, 0, responseItem.ScaledDimensions.width, responseItem.ScaledDimensions.height);
-                        
+             
                         using (var ms = new MemoryStream())
                         {
                             scaledResult.Save(ms, ImageFormat.Png);
