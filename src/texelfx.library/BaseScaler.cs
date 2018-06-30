@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using texelfx.library.Objects;
 
@@ -10,6 +11,6 @@ namespace texelfx.library
 
         protected static string GetOutputFileName(string inputFileName, string outputFileName) => !string.IsNullOrEmpty(outputFileName) ? outputFileName : $"{DateTime.Now.Ticks}_{inputFileName}";
 
-        public abstract ScalerResponseItem Scale(int scaleMultiplier, byte[] originalBytes);        
+        public abstract Task<ScalerResponseItem> ScaleAsync(int scaleMultiplier, byte[] originalBytes);        
     }
 }

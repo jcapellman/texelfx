@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using texelfx.library;
-using texelfx.library.Common;
 using texelfx.library.Managers;
 
 using texelfx.mvc.Models;
@@ -20,9 +19,9 @@ namespace texelfx.mvc.Controllers
             Scalers = ScalerManager.GetScalers().Select(a => a.Name).ToList()
         });
 
-        private BaseScaler GetScaler(string name) => ScalerManager.GetScalers().FirstOrDefault(a => a.Name == name);
+        private static BaseScaler GetScaler(string name) => ScalerManager.GetScalers().FirstOrDefault(a => a.Name == name);
 
-        private byte[] GetBytesFromPost(IFormFile file)
+        private static byte[] GetBytesFromPost(IFormFile file)
         {
             using (var ms = new BinaryReader(file.OpenReadStream()))
             {

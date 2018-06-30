@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading.Tasks;
 
 using texelfx.library.Objects;
 
@@ -12,7 +13,7 @@ namespace texelfx.library.Scalers
     {
         public override string Name => "Nearest Neighbor";
 
-        public override ScalerResponseItem Scale(int scaleMultiplier, byte[] originalBytes)
+        public override async Task<ScalerResponseItem> ScaleAsync(int scaleMultiplier, byte[] originalBytes)
         {
             try
             {
@@ -39,7 +40,7 @@ namespace texelfx.library.Scalers
                         using (var ms = new MemoryStream())
                         {
                             scaledResult.Save(ms, ImageFormat.Png);
-
+                            
                             responseItem.ScaledBytes = ms.ToArray();
 
                             return responseItem;
