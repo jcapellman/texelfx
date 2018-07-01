@@ -20,6 +20,11 @@ namespace texelfx.mvc.Controllers
             Scalers = ScalerManager.GetScalers().Select(a => a.Name).ToList()
         });
 
+        public IActionResult Error(Exception exception) => View("Error", new ErrorViewModel
+        {
+            Message = exception.Message
+        });
+
         private static BaseScaler GetScaler(string name) => ScalerManager.GetScalers().FirstOrDefault(a => a.Name == name);
 
         private static byte[] GetBytesFromPost(IFormFile file)
@@ -46,7 +51,7 @@ namespace texelfx.mvc.Controllers
 
             if (response.HasError)
             {
-                return View("Error");
+                return Error(response.ExceptionCaught);
             }
 
             var aspectRatio = ((float)response.ScaledDimensions.width / response.ScaledDimensions.height);

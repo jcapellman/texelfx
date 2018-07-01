@@ -43,6 +43,8 @@ namespace texelfx.library.Scalers
                             
                             responseItem.ScaledBytes = ms.ToArray();
 
+                            await Task.Delay(0);    // TODO: Implement a proper async call in here
+
                             return responseItem;
                         }
                     }
