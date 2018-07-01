@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using Microsoft.ML;
+using Microsoft.ML.Runtime.Api;
 
 using texelfx.library.Objects;
 
@@ -8,12 +9,12 @@ namespace texelfx.library.Scalers
 {
     public class ImageData
     {
-
+        [Column(ordinal: "0")] public byte[] OriginalBytes;
     }
 
     public class ImageDataPrediction
     {
-        public byte[] ScaledBytes { get; set; }
+        [ColumnName("Score")] public byte[] ScaledBytes;
     }
 
     public class JCScaler : BaseScaler

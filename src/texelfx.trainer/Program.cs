@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace texelfx.trainer
+﻿namespace texelfx.trainer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var trainer = new TexelTrainer();
+
+            trainer.Train(args[0], args[1]);
         }
     }
 }
