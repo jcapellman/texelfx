@@ -7,7 +7,11 @@
 <h1 class="text-danger">Error.</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
 
-<h3>Error information:</h3>
-<p>
-    @Model.Message
-</p>
+<div>
+    <h4>@Model.Message</h4><br/><br/>
+    
+    <h3>Addition Information</h3>
+    <p>
+        @Model.ExceptionDetail
+    </p>
+</div>

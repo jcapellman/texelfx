@@ -22,7 +22,8 @@ namespace texelfx.mvc.Controllers
 
         public IActionResult Error(Exception exception) => View("Error", new ErrorViewModel
         {
-            Message = exception.Message
+            Message = exception.Message,
+            ExceptionDetail = exception.ToString()
         });
 
         private static BaseScaler GetScaler(string name) => ScalerManager.GetScalers().FirstOrDefault(a => a.Name == name);

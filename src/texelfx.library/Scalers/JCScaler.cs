@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using Microsoft.ML;
 using Microsoft.ML.Runtime.Api;
@@ -26,16 +27,23 @@ namespace texelfx.library.Scalers
 
         public override async Task<ScalerResponseItem> ScaleAsync(int scaleMultiplier, byte[] originalBytes)
         {
-            var model = await PredictionModel.ReadAsync<ImageData, ImageDataPrediction>(ModelName);
-
-            var input = new ImageData();
-
-            var prediction = model.Predict(input);
-
-            return new ScalerResponseItem
+            try
             {
-                ScaledBytes = prediction.ScaledBytes
-            };
+                var model = await PredictionModel.ReadAsync<ImageData, ImageDataPrediction>(ModelName);
+
+                var input = new ImageData();
+
+                var prediction = model.Predict(input);
+
+                return new ScalerResponseItem
+                {
+                    ScaledBytes = prediction.ScaledBytes
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ScalerResponseItem(ex);
+            }
         }
     }
 }
