@@ -6,7 +6,7 @@ namespace texelfx.service
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
