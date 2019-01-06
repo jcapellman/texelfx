@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using Microsoft.ML;
+using Microsoft.ML.Legacy;
 using Microsoft.ML.Runtime.Api;
 
 using texelfx.library.Objects;
@@ -20,7 +20,6 @@ namespace texelfx.library.Scalers
 
     public class JCScaler : BaseScaler
     {
-
         private const string ModelName = "jcscaler.mdl";
 
         public override string Name => "JC Scaler";

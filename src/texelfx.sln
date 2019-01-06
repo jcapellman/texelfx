@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.mvc", "texelfx.mvc\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.trainer", "texelfx.trainer\texelfx.trainer.csproj", "{1ABCEBCA-ACB9-4CB3-B7B6-FB513C21AFF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "texelfx.service", "texelfx.service\texelfx.service.csproj", "{80BC893D-3553-4EF7-8381-2E88453D3C96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1ABCEBCA-ACB9-4CB3-B7B6-FB513C21AFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ABCEBCA-ACB9-4CB3-B7B6-FB513C21AFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ABCEBCA-ACB9-4CB3-B7B6-FB513C21AFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
