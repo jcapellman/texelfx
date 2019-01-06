@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26823.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.library", "texelfx.library\texelfx.library.csproj", "{A3464023-869B-48AE-885A-C4C78024A9D5}"
 EndProject
@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.mvc", "texelfx.mvc\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.trainer", "texelfx.trainer\texelfx.trainer.csproj", "{1ABCEBCA-ACB9-4CB3-B7B6-FB513C21AFF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "texelfx.service", "texelfx.service\texelfx.service.csproj", "{80BC893D-3553-4EF7-8381-2E88453D3C96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.service", "texelfx.service\texelfx.service.csproj", "{80BC893D-3553-4EF7-8381-2E88453D3C96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.service.library.windows", "texelfx.service.library.windows\texelfx.service.library.windows.csproj", "{FF47D69D-D0E1-458F-AB7D-14AD545169CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.service.library.linux", "texelfx.service.library.linux\texelfx.service.library.linux.csproj", "{3D11DAA0-91E4-4A66-9A9C-32A7E01F706B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "texelfx.webapi", "texelfx.webapi\texelfx.webapi.csproj", "{977EE06E-C94F-4E7A-B7F8-DB7547EA1993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80BC893D-3553-4EF7-8381-2E88453D3C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF47D69D-D0E1-458F-AB7D-14AD545169CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF47D69D-D0E1-458F-AB7D-14AD545169CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF47D69D-D0E1-458F-AB7D-14AD545169CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF47D69D-D0E1-458F-AB7D-14AD545169CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D11DAA0-91E4-4A66-9A9C-32A7E01F706B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D11DAA0-91E4-4A66-9A9C-32A7E01F706B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D11DAA0-91E4-4A66-9A9C-32A7E01F706B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D11DAA0-91E4-4A66-9A9C-32A7E01F706B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977EE06E-C94F-4E7A-B7F8-DB7547EA1993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977EE06E-C94F-4E7A-B7F8-DB7547EA1993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977EE06E-C94F-4E7A-B7F8-DB7547EA1993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977EE06E-C94F-4E7A-B7F8-DB7547EA1993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
