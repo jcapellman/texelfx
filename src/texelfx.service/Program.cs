@@ -1,5 +1,7 @@
 ﻿using System;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using texelfx.library.Interfaces;
 using texelfx.service.Implementations;
 
@@ -36,28 +38,3 @@ namespace texelfx.service
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
