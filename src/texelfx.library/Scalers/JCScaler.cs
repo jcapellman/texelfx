@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using Microsoft.ML.Legacy;
-using Microsoft.ML.Runtime.Api;
+using Microsoft.ML.Data;
 
 using texelfx.library.Objects;
 
