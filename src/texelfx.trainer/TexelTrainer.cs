@@ -1,4 +1,5 @@
-﻿using Microsoft.ML.Data;
+﻿using System.IO;
+using Microsoft.ML;
 
 using texelfx.library.Scalers;
 
@@ -6,24 +7,25 @@ namespace texelfx.trainer
 {
     public class TexelTrainer
     {
-        public async void Train(string modelFileName, string trainingFileName)
-        {
-            var pipeline = new LearningPipeline
-            {
-                new TextLoader(trainingFileName).CreateFrom<ImageData>(separator: ','),
-                new Dictionarizer("Label"),
-                new ColumnConcatenator("Features", "OriginalBytes"),
-                new FastTreeBinaryClassifier
-                {
-                    NumLeaves = 5,
-                    NumTrees = 5,
-                    MinDocumentsInLeafs = 2
-                }
-            };
-            
-            var model = pipeline.Train<ImageData, ImageDataPrediction>();
+        private MLContext _mlContext;
 
-            await model.WriteAsync(modelFileName);
+        public TexelTrainer()
+        {
+            _mlContext = new MLContext();
+        }
+
+        public void Train(string modelFileName, string trainingFileName)
+        {
+            var dataView = _mlContext.Data.LoadFromTextFile<ImageData>(trainingFileName, hasHeader: false);
+
+            var model = _mlContext.BinaryClassification.Trainers.FastTree();
+
+            var fitModel = model.Fit(dataView);
+
+            using (var fs = new FileStream(modelFileName, FileMode.Create))
+            {
+                _mlContext.Model.Save(fitModel, fs);
+            }
         }
     }
 }
